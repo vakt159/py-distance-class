@@ -1,4 +1,4 @@
-from typing import Self, Any
+from typing import Any
 
 
 class Distance:
@@ -12,45 +12,45 @@ class Distance:
     def __repr__(self) -> str:
         return f"Distance(km={self.km})"
 
-    def __add__(self, other: Any) -> Self:
+    def __add__(self, other: Any) -> "Distance":
         if isinstance(other, int) or isinstance(other, float):
             return Distance(self.km + other)
         return Distance(self.km + other.km)
 
-    def __iadd__(self, other: Any) -> Self:
+    def __iadd__(self, other: Any) -> "Distance":
         if isinstance(other, int) or isinstance(other, float):
             self.km += other
             return self
         self.km += other.km
         return self
 
-    def __mul__(self, other: Any) -> Self:
+    def __mul__(self, other: Any) -> "Distance":
         return Distance(self.km * other)
 
-    def __truediv__(self, other: Any) -> Self:
+    def __truediv__(self, other: Any) -> "Distance":
         return Distance(round(self.km / other, 2))
 
-    def __lt__(self, other: Any) -> Self:
+    def __lt__(self, other: Any) -> bool:
         if isinstance(other, int) or isinstance(other, float):
             return self.km < other
         return self.km < other.km
 
-    def __gt__(self, other: Any) -> Self:
+    def __gt__(self, other: Any) -> bool:
         if isinstance(other, int) or isinstance(other, float):
             return self.km > other
         return self.km > other.km
 
-    def __eq__(self, other: Any) -> Self:
+    def __eq__(self, other: Any) -> bool:
         if isinstance(other, int) or isinstance(other, float):
             return self.km == other
         return self.km == other.km
 
-    def __le__(self, other: Any) -> Self:
+    def __le__(self, other: Any) -> bool:
         if isinstance(other, int) or isinstance(other, float):
             return self.km <= other
         return self.km <= other.km
 
-    def __ge__(self, other: Any) -> Self:
+    def __ge__(self, other: Any) -> bool:
         if isinstance(other, int) or isinstance(other, float):
             return self.km >= other
         return self.km >= other.km
